@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_liquor_category,liquor.category,model_liquor_category,,1,1,1,1
+access_liquor_product,liquor.product,model_liquor_product,,1,1,1,1
+access_sale_order,liquor.order,model_liquor_order,,1,1,1,1
+access_liquor_order_line,liquor.order.line,model_liquor_order_line,,1,1,1,1
+access_send_mail_wizard,send.mail.wizard,model_send_mail_wizard,,1,1,1,1
+
+
+
+

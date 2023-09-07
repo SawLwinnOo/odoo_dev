@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="LiquorStore_root" name="Liquor Store" >
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="liquor_categ" name="Products" sequence="0">
+            <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="liquor_product_categ" name="Liquors"  action="liquor.liquor_product_action" sequence="0"/>
+        </menuitem>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="orders_categ" name="Orders"  sequence="5">
+            <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="liquor_order_categ" name="Orders"  action="liquor.liquor_orders_action" sequence="0"/>
+        </menuitem>
+
+    </menuitem>
+</odoo>
