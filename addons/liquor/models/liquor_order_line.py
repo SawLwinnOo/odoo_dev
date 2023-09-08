@@ -10,5 +10,11 @@ class SaleOrderLine(models.Model):
     quantity = fields.Integer(string='Quantity')
     company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
-    price = fields.Monetary(string='Price')
-    total = fields.Monetary(string='Total Amount')
+    price = fields.Monetary(string='Price', related='product_id.price')
+    total = fields.Monetary(string='Sub Total', compute='_compute_subtotal')
+
+    @api.depends('product_id')
+    def _compute_subtotal(self):
+        for rec in self:
+            rec.total = rec.product_id.price * rec.quantity
+

@@ -1,4 +1,5 @@
 from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 
 class LiquorOrder(models.Model):
@@ -9,18 +10,18 @@ class LiquorOrder(models.Model):
     liquor_order = fields.One2many('liquor.order.line', 'order_id',
                                    string='Liquor Order Lines', tracking=True)
     number = fields.Char(default=lambda self: _("New"), copy=False)
-    order_date = fields.Date(default=lambda self: fields.Date.today())
+    order_date = fields.Date(default=lambda self: fields.Date.today(), copy=False)
     partner_id = fields.Many2one('res.partner', string='Customer')
     user_id = fields.Many2one('res.users', string='Sale Person')
     state = fields.Selection([
-        ('draft','Draft'),
-        ('sent','Sent'),
+        ('draft', 'Draft'),
+        ('sent', 'Sent'),
         ('sale', 'Sale Order'),
         ('done', 'Done'),
         ('cancel', 'Canceled')
-    ],)
-    currency_id = fields.Many2one('res.currency',related='liquor_order.currency_id')
-    tax_totals = fields.Monetary()
+    ], )
+    currency_id = fields.Many2one('res.currency', related='liquor_order.currency_id')
+    tax_totals = fields.Monetary(compute='_compute_total_amount')
 
     @api.model
     def create(self, values):
@@ -41,12 +42,26 @@ class LiquorOrder(models.Model):
 
     def action_cancel(self):
         for rec in self:
+            if rec.state == 'sale':
+                raise UserError(_("Order Confirm! Can't Cancel."))
             rec.state = 'cancel'
 
     def action_send_mail(self):
-        template = self.env.ref('')
+        # template = self.env.ref('')
         for rec in self:
-            template.send_mail(rec.id)
+            self.state = 'sent'
+            # template.send_mail(rec.id)
 
+    def action_customer_preview(self):
+        return {
+            "name": f"{self.number}",
+            "type": "ir.actions.act_window",
+            "res_model": "liquor.order.line",
+            'view_mode': 'tree',
+            'target': 'current'
+        }
 
-
+    @api.depends('liquor_order.total')
+    def _compute_total_amount(self):
+        for order in self:
+            order.tax_totals = sum(line.total for line in order.liquor_order)

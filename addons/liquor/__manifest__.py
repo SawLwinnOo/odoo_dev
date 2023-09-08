@@ -12,6 +12,7 @@
         #views
         "views/liquor_product.xml",
         "views/liquor_order.xml",
+        "views/liquor_order_line.xml",
 
         #menus
         "views/menus.xml"
