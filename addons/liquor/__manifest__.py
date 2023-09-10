@@ -16,5 +16,6 @@
 
         #menus
         "views/menus.xml"
-    ]
+    ],
+    "license": "LGPL-3"
 }

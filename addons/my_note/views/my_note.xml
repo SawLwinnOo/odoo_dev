@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="my_note_view_tree" model="ir.ui.view">
+        <field name="name">my_note_view_tree</field>
+        <field name="model">my.note</field>
+        <field name="arch" type="xml">
+            <tree string="my_note_tree">
+                <field name="title"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="my_note_view_form" model="ir.ui.view">
+        <field name="name">my_note_view_form</field>
+        <field name="model">my.note</field>
+        <field name="arch" type="xml">
+            <form string="my_note_form">
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="description"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="my_note_action" model="ir.actions.act_window">
+        <field name="name">my note</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">my.note</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="note_client_action" model="ir.actions.client">
+        <field name="name">Note</field>
+        <field name="tag">my_note.note_client_action</field>
+        <field name="target">main</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="my_note_root" name="My Note" sequence="0"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="note_py_categ" name="Notes Py" parent="my_note_root" action="my_note.my_note_action" sequence="0"/>
+    <menuitem id="note_js_categ" name="Notes Js" parent="my_note_root" action="my_note.note_client_action" sequence="5"/>
+</odoo>
