@@ -22,6 +22,7 @@ class LiquorOrder(models.Model):
     ], )
     currency_id = fields.Many2one('res.currency', related='liquor_order.currency_id')
     tax_totals = fields.Monetary(compute='_compute_total_amount')
+    note =fields.Html()
 
     @api.model
     def create(self, values):

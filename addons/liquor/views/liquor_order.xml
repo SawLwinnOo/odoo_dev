@@ -63,6 +63,9 @@
                                 </tree>
                             </field>
                             <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2" name="note" nolabel="1" placeholder="Terms and conditions..."/>
+                                </group>
                                 <group class="oe_subtotal_footer oe_right" colspan="4" name="sale_total">
                                     <field name="tax_totals"  string="Total Amount" />
                                 </group>
@@ -80,6 +83,19 @@
             </form>
         </field>
     </record>
+
+    <record id="liquor_order_view_search" model="ir.ui.view">
+       <field name="name">Liquor Order Search</field>
+       <field name="model">liquor.order</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="number" string="number"/>
+                <field name="partner_id" />
+                <field name="user_id" />
+            </search>
+       </field>
+    </record>
+
     <record id="liquor_orders_action" model="ir.actions.act_window">
         <field name="name">liquor_order</field>
         <field name="type">ir.actions.act_window</field>
