@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="my_note.Note" owl="1">
+        <div class="container mt-5">
+            <h1>Hello From My Note</h1>
+            <button class="btn btn-primary">New</button>
+        </div>
+    </t>
+</templates>
