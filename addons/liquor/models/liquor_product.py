@@ -17,9 +17,19 @@ class LiquorProduct(models.Model):
     description = fields.Text(string='Description', tracking=True)
     order_line_id = fields.Many2one("liquor.order.line")
     order_id = fields.Many2one('liquor.order')
+    priority = fields.Selection([
+        ('1', 'Lower'),
+        ('2', 'Low'),
+        ('3', 'Normal'),
+        ('4', 'High'),
+        ('5', 'Highest'),
+    ])
 
-    @api.depends('order_line_id', 'order_id')
+    @api.depends('order_id')
     def _compute_stock_qty(self):
-        for rec in self:
-            if rec.order_id.state == 'sale':
-                rec.stock_qty -= rec.order_line_id.quantity
+        for rec in self.order_id:
+            if rec.state == 'sale':
+                rec.stock_qty -= rec.liquor_order.quantity
+
+            else:
+                rec.stock_qty = 1

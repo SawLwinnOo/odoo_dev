@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_liquor_order_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure">
+                            <div>
+                                <h1>Order #</h1>
+                                <h1><strong t-field="o.number"></strong></h1>
+                            </div>
+                            <div>
+                                <h6 t-field="o.order_date"/>
+                                <h6 t-field="o.partner_id"/>
+                            </div>
+                            <br/>
+                            <br/>
+                            <t t-if="o.liquor_order">
+                                <span><h3>Order Information</h3></span>
+                                <br/>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Sub Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.liquor_order"  t-as="rec">
+                                            <tr>
+                                                <td><span t-field="rec.product_id"/></td>
+                                                <td><span t-field="rec.category_id"/></td>
+                                                <td><span t-field="rec.quantity"/></td>
+                                                <td><span t-field="rec.price"/></td>
+                                                <td><span t-field="rec.total"/></td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td colspan="3"><span t-field="o.note"/></td>
+                                            <td ><strong>Total Amount</strong></td>
+                                            <td><span t-field="o.tax_totals"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

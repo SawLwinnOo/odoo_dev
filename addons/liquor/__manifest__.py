@@ -14,6 +14,9 @@
         "views/liquor_order.xml",
         "views/liquor_order_line.xml",
 
+        #reports
+        "report/liquor_order_report.xml",
+        "report/report.xml",
         #menus
         "views/menus.xml"
     ],
