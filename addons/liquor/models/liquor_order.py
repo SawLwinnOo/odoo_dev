@@ -48,10 +48,10 @@ class LiquorOrder(models.Model):
             rec.state = 'cancel'
 
     def action_send_mail(self):
-        # template = self.env.ref('')
+        template = self.env.ref('liquor.mail_template_sale_confirmation')
         for rec in self:
-            self.state = 'sent'
-            # template.send_mail(rec.id)
+            if rec.partner_id.email:
+                template.send_mail(rec.id, force_send=True)
 
     def action_customer_preview(self):
         return {

@@ -8,6 +8,7 @@
 
         #sequence
         "data/sequence.xml",
+        "data/mail_template_sale_order.xml",
 
         #views
         "views/liquor_product.xml",

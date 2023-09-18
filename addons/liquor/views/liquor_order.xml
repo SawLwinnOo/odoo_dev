@@ -22,7 +22,7 @@
         <field name="arch" type="xml">
             <form string="liquor_order_form">
                 <header>
-                    <button name="action_send_mail" string="Sand Mail" type="object" class="btn-primary"
+                    <button name="action_send_mail" string="Send Mail" type="object" class="btn-primary"
                              attrs="{'invisible': [('state','=','sent')]}" />
                     <button name="action_draft" string="Change to Draft" type="object" class="btn-danger"
                             attrs="{'invisible': [('state','=','draft')]}" confirm="Are you sure want to change Draft?"/>
