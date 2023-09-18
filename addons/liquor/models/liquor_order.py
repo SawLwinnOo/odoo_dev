@@ -8,7 +8,7 @@ class LiquorOrder(models.Model):
     _description = 'LiquorOrder'
 
     liquor_order = fields.One2many('liquor.order.line', 'order_id',
-                                   string='Liquor Order Lines', tracking=True)
+                                   string='Liquor Order Lines', tracking=True ,required=True)
     number = fields.Char(default=lambda self: _("New"), copy=False)
     order_date = fields.Date(default=lambda self: fields.Date.today(), copy=False)
     partner_id = fields.Many2one('res.partner', string='Customer')
