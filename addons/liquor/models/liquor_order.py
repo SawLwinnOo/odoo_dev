@@ -52,6 +52,13 @@ class LiquorOrder(models.Model):
         for rec in self:
             if rec.partner_id.email:
                 template.send_mail(rec.id, force_send=True)
+        # return {
+        #     "name": f"{self.number}",
+        #     "type": "ir.actions.act_window",
+        #     "res_model": "send.mail.wizard",
+        #     'view_mode': 'form',
+        #     'target': 'new'
+        # }
 
     def action_customer_preview(self):
         return {

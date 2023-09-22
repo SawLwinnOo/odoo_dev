@@ -23,7 +23,7 @@
             <form string="liquor_order_form">
                 <header>
                     <button name="action_send_mail" string="Send Mail" type="object" class="btn-primary"
-                             attrs="{'invisible': [('state','=','sent')]}" />
+                             attrs="{'invisible': [('state','=','sent')]}" confirm="Are you sure want to send Mail?"/>
                     <button name="action_draft" string="Change to Draft" type="object" class="btn-danger"
                             attrs="{'invisible': [('state','=','draft')]}" confirm="Are you sure want to change Draft?"/>
                     <button name="action_confirm" string="Confirm" type="object" class="btn btn-success"

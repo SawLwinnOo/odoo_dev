@@ -1,24 +1,26 @@
 {
     "name": "Liquor Store",
+    "author": "Saw Lwinn Oo",
     "depends": ["sale", "mail"],
-    "data":[
+    "data": [
 
-        #security
+        # security
         "security/ir.model.access.csv",
 
-        #sequence
+        # sequence
         "data/sequence.xml",
         "data/mail_template_sale_order.xml",
 
-        #views
+        # views
         "views/liquor_product.xml",
         "views/liquor_order.xml",
         "views/liquor_order_line.xml",
+        "views/template.xml",
 
-        #reports
+        # reports
         "report/liquor_order_report.xml",
         "report/report.xml",
-        #menus
+        # menus
         "views/menus.xml"
     ],
     "license": "LGPL-3"
