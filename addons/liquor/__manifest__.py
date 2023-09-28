@@ -1,7 +1,7 @@
 {
     "name": "Liquor Store",
     "author": "Saw Lwinn Oo",
-    "depends": ["sale", "mail"],
+    "depends": ["sale", "mail", "website"],
     "data": [
 
         # security
