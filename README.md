@@ -11,10 +11,18 @@ computing fields, implementing widgets, creating wizards, controllers and incorp
 
 You can [try here!](addons/liquor).
 
-## My Blog Module
-This is a blog app designed for creating a blog website. Within the website, I have implemented an Odoo portal feature.
+## Web Portal Module
+Web Portal Integration for Product Template Form in Sale Module project is designed to enhance the efficiency and 
+functionality of the existing business management system by introducing a user-friendly web portal for managing product templates. 
 
-[Try here!](addons/my_blog).
+This integration will empower users to create, customize, and maintain product templates easily, improving the overall sales process and customer experience.
+
+
+
+
+
+
+[Try here!](addons/web_portal).
 
 ## Note App 
 I have implemented note app using odoo Owl JS library.

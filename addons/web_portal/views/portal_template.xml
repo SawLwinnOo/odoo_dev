@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="show_product">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container mt-3">
+                    <title>Product</title>
+                    <table class="table border-bottom">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Internal Reference</th>
+                                <th scope="col">Product Type</th>
+                                <th scope="col">Product Category</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="products" t-as="product">
+                                <tr>
+                                    <td><a t-att-href="'/my/{{slug(product)}}'"><t t-out="product.name"/></a></td>
+                                    <td><span t-field="product.default_code"/></td>
+                                    <td><span t-field="product.detailed_type"/></td>
+                                    <td><span t-field="product.categ_id"/></td>
+                                    <td><span t-field="product.list_price"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+<!--    inherit portal_my_home template from portal_template.xml-->
+    <template id="portal_my_home" inherit_id="portal.portal_my_home"
+        priority="1" name="Show Product " customize_show="True">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Product Checkouts</t>
+                <t t-set="url" t-value="'/my/product-checkouts'"/>
+                <t t-set="placeholder_count" t-value="'product_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_products" name="Products">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Products</t>
+            </t>
+            <t t-if="products" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Product Name #</th>
+                        <th class="text-end">Quotation Date</th>
+                        <th class="text-end">Internal Reference</th>
+                        <th class="text-center">Product Type</th>
+                        <th class="text-end">Product Category</th>
+                        <th class="text-end">Price</th>
+                    </tr>
+                </thead>
+                <t t-foreach="products" t-as="product">
+                    <tr>
+                        <td><a t-att-href="'/my/book-checkout/{{slug(product)}}'"><t t-out="product.name"/></a></td>
+                        <td class="text-end"><span t-field="product.default_code"/></td>
+                        <td class="text-end"><span t-field="product.detailed_type"/></td>
+                        <td class="text-center">
+                            <span t-field="product.categ_id"/></td>
+                        <td class="text-end">
+                            <span t-field="product.list_price"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <p t-else="">There are currently no Product for your account.</p>
+        </t>
+    </template>
+
+</odoo>
