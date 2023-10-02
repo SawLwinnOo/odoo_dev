@@ -5,7 +5,7 @@ from odoo.addons.portal.controllers import portal
 
 class Main(http.Controller):
 
-    @http.route("/my/product", auth='public', website=True)
+    @http.route("/home", auth='public', website=True)
     def show_product(self, **kwargs):
         products = request.env['product.template'].search([])
 
@@ -23,8 +23,17 @@ class CustomerPortal(portal.CustomerPortal):
             values['product_count'] = invoice_count
         return values
 
-    @http.route(['/my/product-checkouts', '/my/product-checkouts/page/<int:page>'], auth="public", website=True)
+    @http.route('/my/products', auth="public", website=True)
     def portal_my_product(self, **kwargs):
         products = request.env['product.template'].search([])
 
-        return request.render("web_portal.portal_products", {'products': products})
+        return request.render("web_portal.portal_products", {'products': products, 'page_name': 'product'})
+
+    @http.route('/my/products/<model("product.template"):product>/', auth='public', website=True)
+    def display_course_detail(self, product):
+        return http.request.render('web_portal.product_detail', {'product': product, 'page_name': 'product'})
+
+    # @http.route('/my/products/<int:product_id>/', auth='public', website=True)
+    # def display_course_detail(self, product_id):
+    #     product_details = request.env['product.template'].browse(product_id)
+    #     return http.request.render('web_portal.product_detail', {'product_details': product_details, 'page_name': 'product_detail'})
