@@ -37,7 +37,7 @@
               priority="1" name="Show Product " customize_show="True">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
             <t t-call="portal.portal_docs_entry">
-                <t t-set="title">Product Checkouts</t>
+                <t t-set="title">Product Checkout</t>
                 <t t-set="url" t-value="'/my/products'"/>
                 <t t-set="placeholder_count" t-value="'product_count'"/>
             </t>
@@ -118,4 +118,30 @@
             </t>
         </t>
     </template>
+    <!--    edit portal detail page by inheriting portal_my_details_templates-->
+    <template id="portal_my_details_fields" inherit_id="portal.portal_my_details_fields">
+        <xpath expr="//input[@name='csrf_token']" position="before">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <img name="profile" t-att-src="image_data_uri(partner.image_1920)"
+                             class="card-img-top" alt="" width="10%"
+                             data-mimetype="image/png"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="portal_layout" inherit_id="portal.portal_layout">
+        <xpath expr="//div[hasclass('o_portal_my_details')]" position="inside">
+            <hr/>
+            <t t-if="partner.image_1920">
+                <img name="profile" t-att-src="image_data_uri(partner.image_1920)"
+                     class="image" alt=""
+                     data-mimetype="image/png"/>
+            </t>
+        </xpath>
+    </template>
+
+
 </odoo>
