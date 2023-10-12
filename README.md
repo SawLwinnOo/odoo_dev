@@ -22,15 +22,18 @@ This integration will empower users to create, customize, and maintain product t
 
 [Try here!](/home/slo/odoo_dev/local/odoo16ce/addons/product_portal)
 
-## Note App 
-I have implemented note app using odoo Owl JS library.
-
-[Click me!](addons/my_note).
-
 ## Real estate module
 
 Created a simple real estate module using Odoo framework with the help of odoo documentation. Customized buying, selling,
 management of properties for home and commercial buildings. Gained hands-on experience in working with Odoo's modular structure.
 
 [Here!](addons/estate)
+
+## Owl JS
+
+### . [Note App](/home/slo/odoo_dev/local/odoo16ce/addons/my_note)
+### . [Awsome Gallery](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_gallery)
+### . [AwsomeTshirts](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_tshirt)
+### . [Owl Playground](/home/slo/odoo_dev/local/odoo16ce/addons/owl_playground)
+
 
