@@ -20,9 +20,7 @@ This integration will empower users to create, customize, and maintain product t
 
 
 
-
-
-[Try here!](addons/web_portal).
+[Try here!](/home/slo/odoo_dev/local/odoo16ce/addons/product_portal)
 
 ## Note App 
 I have implemented note app using odoo Owl JS library.
