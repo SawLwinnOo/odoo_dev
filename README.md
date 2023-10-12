@@ -2,7 +2,7 @@
 All modules I have developed using Odoo 16 community edition.
 
 
-## liquor_store_management 
+### liquor_store_management 
 I developed a liquor store management module aimed at streamlining operations and enhancing efficiency in liquor 
 inventory, sales, and order processing.
 
@@ -11,7 +11,7 @@ computing fields, implementing widgets, creating wizards, controllers and incorp
 
 You can [try here!](addons/liquor).
 
-## Web Portal Module
+### Web Portal Module
 Web Portal Integration for Product Template Form in Sale Module project is designed to enhance the efficiency and 
 functionality of the existing business management system by introducing a user-friendly web portal for managing product templates. 
 
@@ -22,7 +22,7 @@ This integration will empower users to create, customize, and maintain product t
 
 [Try here!](/home/slo/odoo_dev/local/odoo16ce/addons/product_portal)
 
-## Real estate module
+### Real estate module
 
 Created a simple real estate module using Odoo framework with the help of odoo documentation. Customized buying, selling,
 management of properties for home and commercial buildings. Gained hands-on experience in working with Odoo's modular structure.
@@ -30,10 +30,12 @@ management of properties for home and commercial buildings. Gained hands-on expe
 [Here!](addons/estate)
 
 ## Owl JS
+. [Note App](/home/slo/odoo_dev/local/odoo16ce/addons/my_note)<br>
+. [Awsome Gallery](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_gallery)<br>
+. [Awsome Tshirts](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_tshirt)<br>
+. [Owl Playground](/home/slo/odoo_dev/local/odoo16ce/addons/owl_playground)<br>
 
-### . [Note App](/home/slo/odoo_dev/local/odoo16ce/addons/my_note)
-### . [Awsome Gallery](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_gallery)
-### . [AwsomeTshirts](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_tshirt)
-### . [Owl Playground](/home/slo/odoo_dev/local/odoo16ce/addons/owl_playground)
+## API
+. [XML-RPC](/home/slo/odoo_dev/local/odoo16ce/odoo_xmlrpc.py)
 
 
