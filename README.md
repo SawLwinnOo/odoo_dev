@@ -7,7 +7,7 @@ functionality of the existing business management system by introducing a user-f
 
 This integration will empower users to create, customize, and maintain product templates easily, improving the overall sales process and customer experience.
 You can download from odoo app store.<br><br>
-[Download Here](/home/slo/odoo_dev/local/odoo16ce/addons/product_portal)
+[Download Here](https://apps.odoo.com/apps/modules/16.0/product_portal/)
 
 ### liquor_store_management 
 I developed a liquor store management module aimed at streamlining operations and enhancing efficiency in liquor 
