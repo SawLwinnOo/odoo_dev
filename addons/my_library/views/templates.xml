@@ -1,24 +1,116 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+        <template id="books">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <section class="pt32 pb32 bg-secondary oe_custom_bg">
+                        <div class="container text-center">
+                            <h1> Editable text and supports drag and
+                                drop.</h1>
+                        </div>
+                    </section>
+                </div>
+                <div class="container">
+                    <t t-foreach="books" t-as="book">
+                        <div t-attf-class="card mt-3 #{'bg-info' if book_odd else ''}">
+                            <div class="card-body" id="card_body">
+                                <h3 t-field="book.name"/>
+                                <t t-if="book.date_release">
+                                    <div t-field="book.date_release"
+                                         class="text-muted"/>
+                                </t>
+                                <b class="mt8"> Authors </b>Creating or modifying templates – QWeb
+                                441
+                                <ul>
+                                    <li t-foreach="book.author_ids"
+                                        t-as="author">
+                                        <span t-esc="author.name"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <section class="container mt16" contenteditable="False">
+                    This is a non-editable text after the list of
+                    books.
+                </section>
             </t>
-          </dl>
+            <p>Hello</p>
+
         </template>
--->
+        <template id="book_detail" name="Books Detail">
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="row mt16">
+                        <div class="col-5">
+                            <span t-field="book.image"
+                                  t-options="{'widget': 'image', 'class': 'mx-auto d-blockimg-thumbnail'}"/>
+                        </div>
+                        <div class="offset-1 col-6">
+                            <h1 t-field="book.name"/>
+                            <t t-if="book.date_release">
+                                <div t-field="book.date_release"
+                                     class="text-muted"/>
+                            </t>
+                            <b class="mt8"> Authors </b>
+                            <ul>
+                                <li t-foreach="book.author_ids"
+                                    t-as="author">
+                                    449450
+                                    CMS Website Development
+                                    <span t-esc="author.name"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div t-field="book.html_description"/>
+                <div t-attf-class="card mt24 #{'bg-light' if book_odd else ''}">
+                    <div class="card-body">
+                        <h3 t-field="book.name"/>
+                        <t t-if="book.date_release">
+                            <div t-field="book.date_release" class="text-muted"/>
+                        </t>
+                        <b class="mt8"> Authors </b>
+                        <ul>
+                            <li t-foreach="book.author_ids"
+                                t-as="author">
+                                <span t-esc="author.name"/>
+                            </li>
+                        </ul>
+                        <a t-attf-href="/books/#{book.id}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-book"/> Book Detail
+                        </a>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="assets_frontend" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <script src="/my_library/static/src/js/snippets.js"
+                        type="text/javascript"/>
+            </xpath>
+        </template>
+        <!--
+                <template id="listing">
+                  <ul>
+                    <li t-foreach="objects" t-as="object">
+                      <a t-attf-href="#{ root }/objects/#{ object.id }">
+                        <t t-esc="object.display_name"/>
+                      </a>
+                    </li>
+                  </ul>
+                </template>
+                <template id="object">
+                  <h1><t t-esc="object.display_name"/></h1>
+                  <dl>
+                    <t t-foreach="object._fields" t-as="field">
+                      <dt><t t-esc="field"/></dt>
+                      <dd><t t-esc="object[field]"/></dd>
+                    </t>
+                  </dl>
+                </template>
+        -->
     </data>
 </odoo>

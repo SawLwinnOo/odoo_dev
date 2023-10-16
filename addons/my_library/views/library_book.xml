@@ -6,14 +6,14 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form>
+                <field name="image" widget="image" class="oe_avatar"/>
                 <group>
                     <group>
                         <field name="name"/>
                         <field name="author_ids" widget="many2many_tags"/>
-                    </group>
-                    <group>
                         <field name="short_name"/>
                         <field name="date_release"/>
+                        <field name="html_description"/>
                     </group>
                 </group>
             </form>
@@ -45,8 +45,9 @@
         </field>
     </record>
 
-    <record id='library_book_action' model='ir.actions.act_window'>
-        <field name="name">Library Books</field>
+    <record id="library_book_action" model="ir.actions.act_window">
+        <field name="name">library_book_action</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">library.book</field>
         <field name="view_mode">tree,form</field>
     </record>
