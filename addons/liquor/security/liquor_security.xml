@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    user group-->
+    <data>
+        <record id="liquor_group_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id"
+                   ref="base.module_category_sales"/>
+            <field name="implied_ids"
+                   eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+    <!--    limit record access-->
+    <data>
+        <record id="liquor_user_rule" model="ir.rule">
+            <field name="name">Liquor Order User Access</field>
+            <field name="model_id" ref="model_liquor_product"/>
+            <field name="domain_force">
+                [('active', '=', True)]
+            </field>
+            <field name="groups" eval="[(4, ref('liquor_group_user'))]"/>
+        </record>
+    </data>
+
+</odoo>

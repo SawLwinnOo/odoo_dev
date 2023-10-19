@@ -13,6 +13,7 @@ class LiquorProduct(models.Model):
     company_id = fields.Many2one("res.company", default=lambda self: self.env.user.company_id.id)
     currency_id = fields.Many2one('res.currency', related="company_id.currency_id")
     price = fields.Monetary()
+    active= fields.Boolean()
     stock_qty = fields.Integer(string='Stock Quantity', computed='_compute_stock_qty')
     description = fields.Text(string='Description', tracking=True)
     order_line_id = fields.Many2one("liquor.order.line")

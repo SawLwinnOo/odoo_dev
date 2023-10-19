@@ -6,6 +6,7 @@
 
         # security
         "security/ir.model.access.csv",
+        "security/liquor_security.xml",
 
         # sequence
         "data/sequence.xml",
