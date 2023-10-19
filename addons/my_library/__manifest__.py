@@ -15,8 +15,12 @@
         'security/ir.model.access.csv',
         'views/library_book.xml',
         'views/templates.xml',
-        'views/snippets.xml',
+        # 'views/snippets.xml',
     ],
+    'assets': {
+        'web.assets_frontend': [
+            # 'my_library/static/src/js/snippets.js',
+        ],},
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

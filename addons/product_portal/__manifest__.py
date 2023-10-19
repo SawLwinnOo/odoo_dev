@@ -14,10 +14,6 @@
         #views
         "views/portal_template.xml",
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'my_library/static/src/js/snippets.js',
-        ],},
 
     'license': 'LGPL-3',
 }

@@ -1,5 +1,4 @@
-odoo.define('book.dynamic.snippet', function (require) {
-    'use strict';
+odoo.define('book.dynamic.snippet', function (require) {'use strict';
     var publicWidget = require('web.public.widget');
 // Add step 5 here
     publicWidget.registry.books = publicWidget.Widget.extend({
