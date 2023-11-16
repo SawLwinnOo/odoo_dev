@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gas_booking,gas.booking,model_gas_booking,,1,1,1,1
+access_gas_car,gas.car,model_gas_car,,1,1,1,1
+access_gas_station,gas.station,model_gas_station,,1,1,1,1
+access_gas_station_line,gas.station.line,model_gas_station_line,,1,1,1,1
+access_gas_booking_line,gas.booking.line,model_gas_booking_line,,1,1,1,1

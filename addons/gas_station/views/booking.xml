@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="booking_view_tree" model="ir.ui.view">
+        <field name="name">booking_view_tree</field>
+        <field name="model">gas.booking</field>
+        <field name="arch" type="xml">
+            <tree string="booking_view_tree">
+                <field name="name"/>
+                <field name="car_id" string="Car Number"/>
+                <field name="booking_date" string="Date"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="booking_view_form" model="ir.ui.view">
+        <field name="name">booking_view_form</field>
+        <field name="model">gas.booking</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="car_id" string="Car"/>
+                        <field name="booking_date"/>
+                    </group>
+                    <notebook>
+                        <page string="Booking Line">
+                            <field name="booking_line_ids">
+                                <tree editable="bottom">
+                                    <field name="station_id" string="Station"/>
+                                    <field name="car_id" string="Car"/>
+                                    <field name="start_time" string="Start Time"/>
+                                    <field name="end_time" string="End Time"/>
+                                    <field name="units"/>
+                                    <field name="total" string="Price"/>
+                                </tree>
+                            </field>
+<!--                            <group name="note_group" col="6" class="mt-2 mt-md-0">-->
+<!--                                <group colspan="4">-->
+<!--                                    <field colspan="2" name="note" nolabel="1" placeholder="Terms and conditions..."/>-->
+<!--                                </group>-->
+<!--                                <group class="oe_subtotal_footer oe_right" colspan="4" name="sale_total">-->
+<!--                                    <field name="tax_totals"  string="Total Amount" />-->
+<!--                                </group>-->
+<!--                                <div class="clearfix"/>-->
+<!--                            </group>-->
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="gas_booking_action" model="ir.actions.act_window">
+        <field name="name">Booking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">gas.booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
