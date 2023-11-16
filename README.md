@@ -7,4 +7,4 @@ All modules are in the 16.0 branch <br>
 
 ## Odoo 17 Community
 
-. [17.0](https://github.com/SawLwinnOo/tree/17.0c)
+. [17.0](https://github.com/SawLwinnOo/tree/17.0)
