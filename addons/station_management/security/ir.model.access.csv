@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_station_management,station.management,model_station_management,,1,1,1,1
+access_station_booking,station.booking,model_station_booking,,1,1,1,1

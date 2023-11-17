@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="station_management_root" name="Station Management" >
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="station_management_categ" name="Config" sequence="0">
+            <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="station_categ" name="Station"  action="station_management.station_action" sequence="10"/>
+            <menuitem id="booking_categ" name="Booking"  action="station_management.booking_action" sequence="0"/>
+            <menuitem id="car_categ" name="Car"  action="fleet.fleet_vehicle_action" sequence="5"/>
+        </menuitem>
+
+    </menuitem>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="station_view_tree" model="ir.ui.view">
+        <field name="name">station_view_tree</field>
+        <field name="model">station.management</field>
+        <field name="arch" type="xml">
+            <tree string="station_tree">
+                <field name="name"/>
+                <field name="company_id" string="Company"/>
+                <field name="line_no" optional="hide"/>
+                <field name="location" optional="hide"/>
+                <field name="price_pre_unit" string="Price"/>
+                <field name="phone"/>
+                <field name="email" optional="hide"/>
+                <field name="website" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="station_view_form" model="ir.ui.view">
+        <field name="name">station_view_form</field>
+        <field name="model">station.management</field>
+        <field name="arch" type="xml">
+            <form string="station_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" string="Company"/>
+                        <field name="line_no"/>
+                        <field name="location" />
+                        <field name="price_pre_unit" />
+                    </group>
+                    <notebook>
+                        <page string="Contact Information">
+                            <group>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="website"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="station_action" model="ir.actions.act_window">
+        <field name="name">Station</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">station.management</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
