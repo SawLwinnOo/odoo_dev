@@ -7,19 +7,26 @@ class StationBooking(models.Model):
     _description = 'Station_Booking'
 
     name = fields.Char(default=lambda self: _("New"))
-    car_id = fields.Many2one("fleet.vehicle", string="Car", tracking=True)
-    customer = fields.Char(related='car_id.license_plate', string="Customer")
+    customer = fields.Many2one('res.partner',related='car_id.driver_id', string="Customer")
+    car_id = fields.Many2one("fleet.vehicle", string="Car", tracking=True,)
     station_id = fields.Many2one("station.management", string="Station")
-    line_name = fields.Char(required=True)
+    lane_id = fields.Many2one('station.management.lane')
     booking_date = fields.Datetime(default=lambda self: fields.Datetime.today())
     unit = fields.Float(required=True)
-    total = fields.Float(compute="_compute_total")
+    currency_id = fields.Many2one('res.currency', related='station_id.currency_id')
+    price = fields.Monetary(related='station_id.price_per_unit')
+    total = fields.Monetary(compute="_compute_total")
     note = fields.Html()
-    status = fields.Selection([
-        ('pending', 'Pending'),
-        ('confirmed', 'Confirmed'),
-        ('canceled', 'Canceled')
-    ], default='pending')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirm', 'Confirm'),
+        ('cancel', 'Cancel'),
+        ('paid', 'Paid'),
+        ('accept', 'Accepted'),
+        ('complete', 'Complete'),
+        ('reschedule', 'Reschedule'),
+
+    ], default='draft')
 
     @api.model
     def create(self, values):
@@ -31,4 +38,4 @@ class StationBooking(models.Model):
     def _compute_total(self):
         """Compute function for the Amenities"""
         for booking in self:
-            booking.total = booking.station_id.price_pre_unit * booking.unit
+            booking.total = booking.price * booking.unit

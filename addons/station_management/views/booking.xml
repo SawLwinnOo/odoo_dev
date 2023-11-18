@@ -6,10 +6,11 @@
         <field name="arch" type="xml">
             <tree string="booking_tree">
                 <field name="name" optional="show"/>
-                <field name="car_id" optional="show"/>
-                <field name="customer" optional="hide"/>
+                <field name="car_id" optional="hide"/>
+                <field name="customer" optional="show" widget="many2one_avatar_user"/>
                 <field name="station_id" optional="show"/>
                 <field name="booking_date" optional="show"/>
+                <field name="state" optional="show" widget="badge"/>
                 <field name="unit" optional="show"/>
                 <field name="total" optional="hide"/>
             </tree>
@@ -20,6 +21,10 @@
         <field name="model">station.booking</field>
         <field name="arch" type="xml">
             <form string="booking_form">
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft, confirm, accept, paid, complete, cancel, reschedule"/>
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -28,14 +33,16 @@
                     </div>
                     <group>
                         <field name="car_id"/>
-                        <field name="customer"/>
+                        <field name="customer" widget="many2one_avatar_user"/>
                         <field name="booking_date" string="Date"/>
                     </group>
                     <group string="Station Info">
                         <field name="station_id"/>
-                        <field name="line_name" />
+                        <field name="lane_id" options="{'no_create': True}" domain="[('station_id', '=', station_id)]"/>
                         <field name="unit"/>
-                        <field name="total"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="price" widget="monetary"/>
+                        <field name="total" widget="monetary"/>
                         <field name="note" placeholder="Terms And Conditions..."/>
                     </group>
                 </sheet>
@@ -53,4 +60,5 @@
         <field name="res_model">station.booking</field>
         <field name="view_mode">tree,form</field>
     </record>
+
 </odoo>

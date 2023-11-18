@@ -10,7 +10,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'fleet'],
+    'depends': ['base','fleet'],
 
     # always loaded
     'data': [
@@ -21,12 +21,9 @@
 
         'views/booking.xml',
         'views/station.xml',
-        'views/menus.xml',
-        'views/templates.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
+        'views/station_lane.xml',
+        'views/menus.xml'
+
     ],
 }
 

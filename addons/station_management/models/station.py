@@ -7,14 +7,14 @@ class StationManagement(models.Model):
     _description = 'StationManagement'
 
     name = fields.Char()
+    lane_id = fields.Many2many('station.management.lane', 'station_id')
+    owner_id = fields.Many2one("res.users")
+    manager_id = fields.Many2one('res.partner')
+    employee_id = fields.Many2one("res.partner")
     company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)
-    location = fields.Char(default=lambda self: self.env.user.contact_address)
-    phone = fields.Char(default=lambda self: self.env.user.phone)
-    email = fields.Char(default=lambda self: self.env.user.email)
-    website = fields.Char(default=lambda self: self.env.user.website)
-    line_no = fields.Integer(string="Line Number")
-    price_pre_unit = fields.Float()
-    special_offer = fields.Float()
+    currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
+    price_per_unit = fields.Monetary(string="Price")
+
 
 
 

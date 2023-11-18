@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="station_lane_view_tree" model="ir.ui.view">
+        <field name="name">station_lane_view_tree</field>
+        <field name="model">station.management.lane</field>
+        <field name="arch" type="xml">
+            <tree string="station_lane_tree">
+                <field name="name" options="{'color_field': 'color'}"/>
+                <field name="station_id" string="Station" options="{'no_create': True}"/>
+                <field name="active" string="Active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="station_lane_view_form" model="ir.ui.view">
+        <field name="name">station_lane_view_form</field>
+        <field name="model">station.management.lane</field>
+        <field name="arch" type="xml">
+            <form string="station_lane_form">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="station_id" string="Station"/>
+                        <field name="active"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="station_lane_action" model="ir.actions.act_window">
+        <field name="name">Lane</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">station.management.lane</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

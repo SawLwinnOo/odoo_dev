@@ -7,13 +7,11 @@
         <field name="arch" type="xml">
             <tree string="station_tree">
                 <field name="name"/>
-                <field name="company_id" string="Company"/>
-                <field name="line_no" optional="hide"/>
-                <field name="location" optional="hide"/>
-                <field name="price_pre_unit" string="Price"/>
-                <field name="phone"/>
-                <field name="email" optional="hide"/>
-                <field name="website" optional="hide"/>
+                <field name="lane_id" string="Lane" widget="many2many_tags"/>
+                <field name="owner_id" string="Owner"/>
+                <field name="manager_id" string="Manager"/>
+                <field name="employee_id" string="Employee"/>
+                <field name="price_per_unit" string="Price"/>
             </tree>
         </field>
     </record>
@@ -26,20 +24,14 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="company_id" string="Company"/>
-                        <field name="line_no"/>
-                        <field name="location" />
-                        <field name="price_pre_unit" />
+                        <field name="lane_id" string="Lane" widget="many2many_tags" options="{'no_create': True,}"
+                               domain="[('station_id','=',id),('active','=', True)]"/>
+                        <field name="owner_id" string="Owner"/>
+                        <field name="manager_id" string="Manager"/>
+                        <field name="employee_id" string="Employee"/>
+                        <field name="currency_id" string="Currency" invisible="1"/>
+                        <field name="price_per_unit" string="Price" widget="monetary" />
                     </group>
-                    <notebook>
-                        <page string="Contact Information">
-                            <group>
-                                <field name="phone"/>
-                                <field name="email"/>
-                                <field name="website"/>
-                            </group>
-                        </page>
-                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
