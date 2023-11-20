@@ -7,5 +7,5 @@ class StationManagementLane(models.Model):
 
     name = fields.Char()
     station_id = fields.Many2one('station.management')
-    active = fields.Boolean(default=True)
+    active = fields.Boolean()
     color = fields.Integer(string='Color')

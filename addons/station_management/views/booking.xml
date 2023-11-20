@@ -38,9 +38,9 @@
                             confirm="Are you sure want to Paid?"
                             invisible="state in ('paid','cancel','draft', 'reschedule','accept','arrive','complete',)"/>
                     <button name="action_arrived" type="object" string="Arrived" class="oe_highlight"
-                            invisible="state in ('arrive', 'draft', 'confirm', 'paid', 'complete','cancel','reschedule')"/>
+                            invisible="state in ('arrive', 'draft', 'confirm', 'paid', 'complete','cancel',)"/>
                     <button name="action_complete" type="object" string="Complete" class="oe_highlight"
-                            invisible="state in ('complete','cancel','draft','confirm', 'paid','accept','reschedule')"/>
+                            invisible="state in ('complete','cancel','draft','confirm', 'paid','accept',)"/>
                     <button name="action_reschedule" type="object" string="Reschedule" class="oe_highlight"
                             invisible="state == 'reschedule'"/>
                     <button name="action_draft" type="object" string="Draft" class="oe_highlight"

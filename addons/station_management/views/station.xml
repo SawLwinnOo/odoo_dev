@@ -11,6 +11,7 @@
                 <field name="owner_id" string="Owner"/>
                 <field name="manager_id" string="Manager"/>
                 <field name="employee_id" string="Employee"/>
+                <field name="currency_id" invisible="1"/>
                 <field name="price_per_unit" string="Price"/>
             </tree>
         </field>
