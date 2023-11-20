@@ -5,7 +5,7 @@
         <field name="model">station.management.lane</field>
         <field name="arch" type="xml">
             <tree string="station_lane_tree">
-                <field name="name" options="{'color_field': 'color'}"/>
+                <field name="name"/>
                 <field name="station_id" string="Station" options="{'no_create': True}"/>
                 <field name="active" string="Active"/>
             </tree>

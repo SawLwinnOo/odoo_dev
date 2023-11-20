@@ -7,7 +7,7 @@ class StationBooking(models.Model):
     _description = 'Station_Booking'
 
     name = fields.Char(default=lambda self: _("New"))
-    customer = fields.Many2one('res.partner', related='car_id.driver_id', string="Customer")
+    customer = fields.Many2one('res.partner',string="Customer")
     car_id = fields.Many2one("fleet.vehicle", string="Car", tracking=True, )
     station_id = fields.Many2one("station.management", string="Station", tracking=True)
     lane_id = fields.Many2one('station.management.lane')
@@ -19,12 +19,13 @@ class StationBooking(models.Model):
     note = fields.Html()
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('confirm', 'Confirm'),
-        ('cancel', 'Cancel'),
+        ('confirm', 'Confirmed'),
         ('paid', 'Paid'),
         ('accept', 'Accepted'),
-        ('complete', 'Complete'),
+        ('arrive', 'Arrived'),
+        ('complete', 'Completed'),
         ('reschedule', 'Reschedule'),
+        ('cancel', 'Canceled'),
 
     ], default='draft', tracking=True)
 
@@ -43,6 +44,10 @@ class StationBooking(models.Model):
     def action_confirm(self):
         for rec in self:
             rec.state = 'confirm'
+
+    def action_draft(self):
+        for rec in self:
+            rec.state = 'draft'
 
     def action_cancel(self):
         for rec in self:
@@ -64,16 +69,6 @@ class StationBooking(models.Model):
         for rec in self:
             rec.state = 'reschedule'
 
-    def action_register_payment(self):
-        return {
-            'name': _('Register Payment'),
-            'res_model': 'account.payment.register',
-            'view_mode': 'form',
-            'views': [[False, 'form']],
-            'context': {
-                'active_model': 'account.move.line',
-                'active_ids': self.ids,
-            },
-            'target': 'new',
-            'type': 'ir.actions.act_window',
-        }
+    def action_arrived(self):
+        for rec in self:
+            rec.state = 'arrive'

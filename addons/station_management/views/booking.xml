@@ -4,13 +4,21 @@
         <field name="name">booking_view_tree</field>
         <field name="model">station.booking</field>
         <field name="arch" type="xml">
-            <tree string="booking_tree">
+            <tree string="booking_tree"
+                  decoration-danger="state == 'cancel'"
+                  decoration-warning="state == 'draft'"
+                  decoration-success="state in ('paid','accept','arrive','complete')"
+                  decoration-info="state in ('confirm','reschedule')">
                 <field name="name" optional="show"/>
                 <field name="car_id" optional="hide"/>
                 <field name="customer" optional="show" widget="many2one_avatar_user"/>
                 <field name="station_id" optional="show"/>
                 <field name="booking_date" optional="show"/>
-                <field name="state" optional="show" widget="badge"/>
+                <field name="state" optional="show" widget="badge"
+                       decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'draft'"
+                       decoration-success="state in ('paid','accept','arrive','complete')"
+                       decoration-info="state in ('confirm', 'accept','reschedule')"/>
                 <field name="unit" optional="show"/>
                 <field name="total" optional="hide"/>
             </tree>
@@ -23,21 +31,34 @@
             <form string="booking_form">
                 <header>
                     <button name="action_confirm" type="object" string="Confirm" class="oe_highlight"
-                             invisible="state in ('paid','draft')"/>
+                            invisible="state in ('paid', 'confirm', 'complete', 'accept', 'arrive')"/>
                     <button name="action_accepted" type="object" string="Accept" class="oe_highlight"
-                             invisible="state == 'accept'"/>
+                            invisible="state in ('accept', 'draft', 'confirm', 'cancel','arrive','complete','reschedule')"/>
+                    <button name="action_paid" type="object" string="Paid" class="oe_highlight"
+                            confirm="Are you sure want to Paid?"
+                            invisible="state in ('paid','cancel','draft', 'reschedule','accept','arrive','complete',)"/>
+                    <button name="action_arrived" type="object" string="Arrived" class="oe_highlight"
+                            invisible="state in ('arrive', 'draft', 'confirm', 'paid', 'complete','cancel','reschedule')"/>
+                    <button name="action_complete" type="object" string="Complete" class="oe_highlight"
+                            invisible="state in ('complete','cancel','draft','confirm', 'paid','accept','reschedule')"/>
+                    <button name="action_reschedule" type="object" string="Reschedule" class="oe_highlight"
+                            invisible="state == 'reschedule'"/>
+                    <button name="action_draft" type="object" string="Draft" class="oe_highlight"
+                            invisible="state == 'draft'"/>
                     <button name="action_cancel" type="object" string="Cancel" class="oe_highlight"
                             invisible="state == 'cancel'"/>
-                    <button name="action_paid" type="object" string="Paid" class="oe_highlight"
-                            confirm="Are you sure want to Paid?" invisible="state in ('paid','cancel','draft', 'reschedule')"/>
-                    <button name="action_reschedule" type="object" string="Reschedule" class="oe_highlight"
-                            invisible="state == 'reschedule'" />
+
+
+
                     <field name="state" widget="statusbar"
-                           statusbar_visible="draft, confirm, accept, paid, complete, cancel, reschedule"/>
+                           statusbar_visible="draft, confirm, paid, accept, arrive, complete,  reschedule, cancel" />
 
                 </header>
                 <sheet>
-                    <widget name="web_ribbon" title="Paid" invisible="state in ('cancel', 'confirm', 'complete', 'reschedule', 'draft','accept')"/>
+                    <widget name="web_ribbon" title="Paid"
+                            invisible="state in ('cancel', 'confirm', 'complete', 'reschedule', 'draft','accept','arrive')"/>
+                    <widget name="web_ribbon" title="Draft" bg_color="text-bg-warning"
+                            invisible="state in ('cancel', 'confirm', 'complete', 'reschedule', 'paid','accept','arrive',)"/>
 
                     <div class="oe_title">
                         <h1>
