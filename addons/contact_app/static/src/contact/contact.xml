@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="contact_app.Root">
+        <div class="container">
+            <div class="row">
+                <t t-foreach="state.contacts" t-as="contact" t-key="contact.id">
+                    <div class="col-4">
+                        <img t-attf-src="/web/image/res.partner/{{contact.id}}/image_1920" class="card-img-top" />
+                        <h1 class="card-title"><t t-esc="contact.name"/></h1>
+                        <p class="card-body">
+                            <span>PHONE : <t t-esc="contact.phone"/></span><br/>
+                            <span>EMAIL : <t t-esc="contact.email"/></span>
+                        </p>
+                    </div>
+                </t>
+
+            </div>
+
+        </div>
+    </t>lt="..."/
+</templates>
