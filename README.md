@@ -27,13 +27,7 @@ management of properties for home and commercial buildings. Gained hands-on expe
 
 [Here!](addons/estate)
 
-## Owl JS
-. [Note App](/home/slo/odoo_dev/local/odoo16ce/addons/my_note)<br>
-. [Awsome Gallery](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_gallery)<br>
-. [Awsome Tshirts](/home/slo/odoo_dev/local/odoo16ce/addons/awesome_tshirt)<br>
-. [Owl Playground](/home/slo/odoo_dev/local/odoo16ce/addons/owl_playground)<br>
 
-## API
-. [XML-RPC](/home/slo/odoo_dev/local/odoo16ce/odoo_xmlrpc.py)
+
 
 
