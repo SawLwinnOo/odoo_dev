@@ -20,12 +20,7 @@ You can [try here!](addons/liquor).
 
 
 
-### Real estate module
 
-Created a simple real estate module using Odoo framework with the help of odoo documentation. Customized buying, selling,
-management of properties for home and commercial buildings. Gained hands-on experience in working with Odoo's modular structure.
-
-[Here!](addons/estate)
 
 
 
