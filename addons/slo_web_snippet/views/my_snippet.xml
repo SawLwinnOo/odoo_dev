@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="my_snippet" name="My snippet">
+        <section id="snippet_selector" class="container">
+            <div class="container">
+                <div class="my-snippet-container">
+                    <div class="my-snippet-item">
+                        <p>1st item</p>
+                    </div>
+                    <div class="my-snippet-item">
+                        <p>2nd item</p>
+                    </div>
+                    <div class="my-snippet-item">
+                        <p>3rd item</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="test_snippet" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_content']//t[@t-snippet][last()]"  position="after">
+            <t t-snippet="slo_web_snippet.my_snippet"/>
+        </xpath>
+    </template>
+</odoo>
